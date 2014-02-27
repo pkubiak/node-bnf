@@ -1,0 +1,27 @@
+<null>::= ""
+<spacja>::= " "
+<ciag-spacji>::= <null> | <spacja><ciag-spacji>
+<symbol>::= "a" | "b" | "0" | "1"
+<ciag-symboli>::= <symbol> | <symbol><ciag-symboli>
+
+<suma> ::= "+"
+<gwiazdka> ::= "*"
+<lewy-nawias> ::= "("
+<prawy-nawias> ::= ")"
+
+<wyrazenie> ::= 
+			<ciag-symboli> |
+			<ciag-spacji><wyrazenie><ciag-spacji> |
+			<wyrazenie><wyrazenie> |
+			<wyrazenie><suma><wyrazenie> |
+			<wyrazenie-w-nawiasie> |
+			<wyrazenie><gwiazdka> |
+			<symbol><gwiazdka>
+
+<wyrazenie-w-nawiasie> ::= <lewy-nawias><wyrazenie><prawy-nawias>
+
+<wyrazenie-z-gwiazdka> ::= 	
+			<symbol><gwiazdka> |
+			<wyrazenie-z-gwiazdka><gwiazdka> |
+			<wyrazenie-w-nawiasie><gwiazdka>
+
